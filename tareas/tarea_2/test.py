@@ -46,7 +46,7 @@ fecha=inicio
 tot_avistamientos=[]
 while fecha <= fin:
     url = f"https://api.ebird.org/v2/data/obs/CL/historic/{fecha.year}/{fecha.month}/{fecha.day}"
-    avistamientos_dia=get_por_fecha(api_key=api_key,url=url, sesion=sesion)
+    avistamientos_dia=get_por_fecha(url=url, sesion=sesion)
     if avistamientos_dia:
         print(len(avistamientos_dia))
         if tot_avistamientos:
@@ -67,4 +67,4 @@ while fecha <= fin:
 
 df=pd.DataFrame(tot_avistamientos)
 
-df.to_csv("avistamientos_chile.csv", index=False, encoding='utf-8')
+df.to_csv("data/avistamientos_chile.csv", index=False, encoding='utf-8')
